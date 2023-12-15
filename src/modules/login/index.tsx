@@ -2,18 +2,11 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { ContentLayout } from "@/layouts";
 import { Button, TextLogo } from "@/components";
-
-const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8, "Password must be at least 8 characters long"),
-});
-
-type TLoginSchema = z.infer<typeof loginSchema>;
+import { type TLoginSchema, loginSchema } from "./schema";
 
 export const LoginModule: FC = () => {
   const {
